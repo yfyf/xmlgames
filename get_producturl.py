@@ -4,8 +4,9 @@ import sys
 
 class STATE:
     READING_TAG_OPEN = 0
-    READING_TAG_CLOSE = 1
-    READING_STUFF = 2
+    READING_TAG_JUST_OPEN = 1
+    READING_TAG_CLOSE = 2
+    READING_STUFF = 3
 
 
 def got_stuff(tree, stuff):
@@ -13,36 +14,40 @@ def got_stuff(tree, stuff):
         print (stuff)
 
 
-def get_producturls(s):
-    i, tree, elem, state = 0, [], [], STATE.READING_STUFF
+def get_producturls(f):
+    tree, elem, state = [], [], STATE.READING_STUFF
 
-    while i < len(s):
-        if state == STATE.READING_STUFF:
-            if s[i] == '<':
-                got_stuff(tree, "".join(elem))
-                elem = []
-                if s[i+1] == '/':
+    bu = 'tmp'
+    while bu != '':
+        bu = f.read(4096)
+        for c in bu:
+            if state == STATE.READING_STUFF:
+                if c == '<':
+                    got_stuff(tree, "".join(elem))
+                    elem = []
+                    state = STATE.READING_TAG_JUST_OPEN
+                else:
+                    elem.append(c)
+            elif state == STATE.READING_TAG_JUST_OPEN:
+                if c == '/':
                     state = STATE.READING_TAG_CLOSE
                 else:
+                    elem.append(c)
                     state = STATE.READING_TAG_OPEN
-            else:
-                elem.append(s[i])
-        elif state == STATE.READING_TAG_OPEN:
-            if s[i] == '>':
-                tree.append("".join(elem))
-                elem = []
-                state = STATE.READING_STUFF
-            elif s[i] == '/' and s[i+1] == '>':
-                # skip empty stuff
-                state = STATE.READING_STUFF
-                i += 1
-            else:
-                elem.append(s[i])
-        elif state == STATE.READING_TAG_CLOSE:
-            if s[i] == '>':
-                tree.pop()
-                state = STATE.READING_STUFF
-        i += 1
+            elif state == STATE.READING_TAG_OPEN:
+                if c == '>':
+                    tree.append("".join(elem))
+                    elem = []
+                    state = STATE.READING_STUFF
+                elif c == '/':
+                    # skip empty stuff
+                    state = STATE.READING_STUFF
+                else:
+                    elem.append(c)
+            elif state == STATE.READING_TAG_CLOSE:
+                if c == '>':
+                    tree.pop()
+                    state = STATE.READING_STUFF
 
 
 def entry_point(argv):
@@ -51,10 +56,8 @@ def entry_point(argv):
         return 1
 
     f = open(argv[1], 'r')
-    s = f.read()
+    get_producturls(f)
     f.close()
-
-    get_producturls(s)
     return 0
 
 

@@ -12,8 +12,8 @@ Existing implementations:
 
 1. XSLT via XALAN. OOM.
 2. XSLT via xsltproc. OOM.
-3. Custom parser (get_producturl.py) via pypy: 26s.
-4. Custom parser (get_producturl.py) via rpython: 9.5s.
+3. Custom parser (get_producturl.py) via pypy: 26.5s.
+4. Custom parser (get_producturl.py) via rpython: 8.2
 
 To be evaluated:
 
@@ -23,11 +23,10 @@ To be evaluated:
 * xml.etree.ElementTree in PyPy.
 * xml.etree.cElementTree in CPython.
 * add JIT to ``get_producturl.py`` rpython.
-* Streaming (for constant memory usage) for all implementations.
 
 Rules:
 
-1. Read to memory before processing.
+1. Streaming (for constant memory usage) for all implementations.
 2. Warm filesystem cache (i.e. do it more than once).
 3. Single-threaded. We are interested only about serial performance.
 4. If you make your own parser, don't try to make it correct. Make it work.
