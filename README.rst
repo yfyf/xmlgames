@@ -14,11 +14,12 @@ Existing implementations:
 2. XSLT via xsltproc. OOM.
 3. Custom parser (get_producturl.py) via pypy: 26.5s.
 4. Custom parser (get_producturl.py) via rpython: 8.2
+5. Naïve hexpat (Haskell): 50s (benched on an i5 though)
 
 To be evaluated:
 
 * rewrite of ``get_producturl.py`` in C.
-* expat (or hexpat)
+* C + expat
 * LXML in CPython.
 * xml.etree.ElementTree in PyPy.
 * xml.etree.cElementTree in CPython.
@@ -41,3 +42,11 @@ Compile rpython application
 See `tutorial`_ for more info.
 
 .. _tutorial: http://morepypy.blogspot.nl/2011/04/tutorial-writing-interpreter-with-pypy.html
+
+Haskell
+=======
+
+::
+
+    cabal install hexpat
+    ghc -O3 get_producturl.hs
