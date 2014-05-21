@@ -2,7 +2,8 @@ Dumphole for fast XML processors
 ================================
 
 ::
-  Intel(R) Core(TM) i7-4500U CPU @ 1.80GHz
+
+    Intel(R) Core(TM) i7-4500U CPU @ 1.80GHz
 
 Goal: parse ``publicfeed.huge.xml`` (~1 GB) as quickly as possible. Output all
 ``Products/Product/ProductUrl`` strings separated by newline.
@@ -17,9 +18,10 @@ Existing implementations:
 To be evaluated:
 
 * expat (or hexpat)
-* Python via LXML
-* xml.etree in PyPy
+* Python via LXML.
+* xml.etree in PyPy.
 * add JIT to ``get_producturl.py`` rpython.
+* Streaming (for constant memory usage).
 
 Rules:
 
@@ -31,6 +33,7 @@ Compile rpython application
 ===========================
 
 ::
+
   /path/to/pypy/rpython/bin/rpython ./get_producturl.py
 
 See `tutorial`_ for more info.
