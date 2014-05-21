@@ -14,6 +14,8 @@ Existing implementations:
 2. XSLT via xsltproc. OOM.
 3. Custom parser (get_producturl.py) via pypy: 26.5s.
 4. Custom parser (get_producturl.py) via rpython: 8.2
+5. Expat streaming parser (expat.c, depends on ``apt-get install expat``) with
+   gcc: **TODO**
 
 To be evaluated:
 
