@@ -15,11 +15,12 @@ Existing implementations:
 3. Custom parser (get_producturl.py) via pypy: 26.5s.
 4. Custom parser (get_producturl.py) via rpython: 8.2
 5. Naïve hexpat (Haskell): 50s (benched on an i5 though)
+6. Expat streaming parser (expat.c, depends on ``apt-get install expat``) with
+   gcc: **TODO**
 
 To be evaluated:
 
 * rewrite of ``get_producturl.py`` in C.
-* C + expat
 * LXML in CPython.
 * xml.etree.ElementTree in PyPy.
 * xml.etree.cElementTree in CPython.

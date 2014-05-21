@@ -1,9 +1,11 @@
+CC=gcc
+CFLAGS=-O3 -std=c99 -lexpat
 
 .PHONY: all clean
-all: publicfeed.huge.xml
+all: publicfeed.huge.xml expat
 
 clean:
-	rm -f publicfeed.pretty.xml publicfeed.raw.xml publicfeed.huge.xml
+	rm -f publicfeed.pretty.xml publicfeed.raw.xml publicfeed.huge.xml expat
 
 URL=http://produktfeed.getaccess.dk/feeds/publicfeed
 
@@ -20,3 +22,6 @@ publicfeed.huge.xml: publicfeed.raw.xml
 		cat publicfeed.raw.xml >> $@; \
 	done
 	echo '</Products>' >> $@
+
+expat: expat.c
+	$(CC) $(CFLAGS) expat.c -o $@
