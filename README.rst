@@ -17,17 +17,20 @@ Existing implementations:
 
 To be evaluated:
 
+* rewrite of ``get_producturl.py`` in C.
 * expat (or hexpat)
-* Python via LXML.
-* xml.etree in PyPy.
+* LXML in CPython.
+* xml.etree.ElementTree in PyPy.
+* xml.etree.cElementTree in CPython.
 * add JIT to ``get_producturl.py`` rpython.
-* Streaming (for constant memory usage).
+* Streaming (for constant memory usage) for all implementations.
 
 Rules:
 
 1. Read to memory before processing.
 2. Warm filesystem cache (i.e. do it more than once).
 3. Single-threaded. We are interested only about serial performance.
+4. If you make your own parser, don't try to make it correct. Make it work.
 
 Compile rpython application
 ===========================
