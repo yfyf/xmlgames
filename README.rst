@@ -33,6 +33,17 @@ Rules:
 3. Single-threaded. We are interested only about serial performance.
 4. If you make your own parser, don't try to make it correct. Make it work.
 
+Results
+=======
+
+====              ==============    ======   =========
+What              i7-4500 1.8Mhz    i5 (?)   Heap (MB)
+====              ==============    ======   =========
+PyPy              26.5                       
+RPython           8.2                        15.2
+Hexpat (Haskell)  36.5                       36.52
+Expat (C)         7.38                       0.6
+
 Compile rpython application
 ===========================
 
