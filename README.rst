@@ -16,14 +16,14 @@ Existing implementations:
 4. Custom parser (get_producturl.py) via ``rpython 2.2.1``.
 5. Naïve ``hexpat 0.20.6 (GHC 7.6.3)``.
 6. ``Expat 2.1.0`` streaming parser, ``gcc: 4.8.2``.
+7. ``lxml 3.3.5`` in ``pypy 2.2.1`` (leaks lots of memory).
+8. ``lxml 3.3.5`` in ``CPython 3.3.5`` (leaks lots of memory).
+9. xml.etree.ElementTree in ``CPython 3.3.5`` and ``pypy 2.2.1``.
 
 To be evaluated:
 
 * rewrite of ``get_producturl.py`` in C.
-* LXML in CPython.
-* xml.etree.ElementTree in PyPy.
-* xml.etree.cElementTree in CPython.
-* add JIT to ``get_producturl.py`` rpython.
+* add JIT to ``get_producturl.py`` RPython.
 
 Rules:
 
@@ -35,14 +35,18 @@ Rules:
 Results
 =======
 
-================ ============== ====== =========
-What             i7-4500 1.8Mhz i5 (?) Heap (MB)
-================ ============== ====== =========
-PyPy             26.5                  
-RPython          8                     15.2
-Hexpat (Haskell) 36.5                  36.52
-Expat (C)        7.05                  0.6
-================ ============== ====== =========
+================ ============== =========
+What             i7-4500 1.8Mhz Heap (MB)
+================ ============== =========
+Expat (C)        7.05           0.6
+Custom (RPython) 8              15.2
+LXML (Python3)   13.4
+Etree (Python3)  23
+Custom (PyPy)    26.5
+LXML (PyPy)      27.3
+Hexpat (Haskell) 36.5           36.52
+Etree (PyPy)     42.5
+================ ============== =========
 
 Compile rpython application
 ===========================
