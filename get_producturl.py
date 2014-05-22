@@ -19,7 +19,7 @@ def get_producturls(f):
 
     bu = 'tmp'
     while bu != '':
-        bu = f.read(4096)
+        bu = f.read(1 << 16)
         for c in bu:
             if state == STATE.READING_STUFF:
                 if c == '<':
