@@ -19,6 +19,7 @@ Existing implementations:
 7. ``lxml 3.3.5`` in ``pypy 2.2.1`` (leaks lots of memory).
 8. ``lxml 3.3.5`` in ``CPython 3.3.5`` (leaks lots of memory).
 9. xml.etree.ElementTree in ``CPython 3.3.5`` and ``pypy 2.2.1``.
+10. ``xml.parsers.expat`` via ``CPython 3.3.5``.
 
 To be evaluated:
 
@@ -41,6 +42,7 @@ What             i7-4500 1.8Mhz (s) Heap (MB)    MB/s
 Expat (C)        7.05               0.6          144.9
 Custom (RPython) 8                  19.7         127.7
 LXML (Python3)   13.4               **5573**     76.2
+Expat (Python3)  20.8               6.7          49.1
 Etree (Python3)  23.3               68.3         43.8
 LXML (PyPy)      27.3               **5587**     37.4
 Custom (PyPy)    32.4               35.1         31.5
