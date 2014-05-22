@@ -35,18 +35,18 @@ Rules:
 Results
 =======
 
-================ ============== =========
+================ ============== ============
 What             i7-4500 1.8Mhz Heap (MB)
-================ ============== =========
+================ ============== ============
 Expat (C)        7.05           0.6
-Custom (RPython) 8              15.2
-LXML (Python3)   13.4
-Etree (Python3)  23
-Custom (PyPy)    26.5
-LXML (PyPy)      27.3
-Hexpat (Haskell) 36.5           36.52
-Etree (PyPy)     42.5
-================ ============== =========
+Custom (RPython) 8              19.7
+LXML (Python3)   13.4           **5573**
+Etree (Python3)  23.3           68.3
+Custom (PyPy)    32.4           35.1
+LXML (PyPy)      27.3           **5587**
+Etree (PyPy)     35.0           5.1
+Hexpat (Haskell) 36.5           36.5
+================ ============== ============
 
 Compile rpython application
 ===========================
@@ -65,4 +65,4 @@ Haskell
 ::
 
     cabal install hexpat
-    ghc -O3 get_producturl.hs
+    make hexpat
