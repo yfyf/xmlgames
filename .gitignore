@@ -4,3 +4,4 @@
 /hexpat
 __pycache__
 *.py[oc]
+/get_producturl_go

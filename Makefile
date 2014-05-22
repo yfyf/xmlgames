@@ -2,13 +2,14 @@ CC=gcc
 CFLAGS=-O3 -std=c99 -lexpat
 RPYTHON ?= rpython
 RUSTC?=rustc
+GO=go
 
 .PHONY: all clean
 all: publicfeed.huge.xml expat rpython
 
 clean:
 	rm -f publicfeed.pretty.xml publicfeed.raw.xml publicfeed.huge.xml \
-		expat rpython hexpat get_producturl_rs
+		expat rpython hexpat get_producturl_rs get_product_url_go
 
 URL=http://produktfeed.getaccess.dk/feeds/publicfeed
 
@@ -33,6 +34,9 @@ expat: expat.c
 rpython: get_producturl.py
 	$(RPYTHON) $<
 	mv get_producturl-c $@
+
+go: get_producturl.go
+	$(GO) build -o get_producturl_go $<
 
 hexpat: get_producturl.hs
 	ghc -O3 $< -o $@
