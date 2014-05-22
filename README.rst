@@ -21,6 +21,7 @@ Existing implementations:
 9. xml.etree.ElementTree in ``CPython 3.3.5`` and ``pypy 2.2.1``.
 10. ``xml.parsers.expat`` via ``CPython 3.3.5``.
 11. ``expat`` in ``luajit 2.0.3`` and ``lua 5.2.3``.
+12. ``encoding/xml`` in ``go 1.2.2``.
 
 To be evaluated:
 
