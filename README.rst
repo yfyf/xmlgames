@@ -12,11 +12,10 @@ Existing implementations:
 
 1. XSLT via XALAN. OOM.
 2. XSLT via xsltproc. OOM.
-3. Custom parser (get_producturl.py) via pypy: 26.5s.
-4. Custom parser (get_producturl.py) via rpython: 8.2
-5. Naïve hexpat (Haskell): 50s (benched on an i5 though)
-6. Expat streaming parser (expat.c, depends on ``apt-get install expat``) with
-   gcc: **TODO**
+3. Custom parser (get_producturl.py) via ``pypy 2.2.1``.
+4. Custom parser (get_producturl.py) via ``rpython 2.2.1``.
+5. Naïve ``hexpat 0.20.6 (GHC 7.6.3)``.
+6. ``Expat 2.1.0`` streaming parser, ``gcc: 4.8.2``.
 
 To be evaluated:
 
@@ -40,9 +39,9 @@ Results
 What             i7-4500 1.8Mhz i5 (?) Heap (MB)
 ================ ============== ====== =========
 PyPy             26.5                  
-RPython          8.2                   15.2
+RPython          8                     15.2
 Hexpat (Haskell) 36.5                  36.52
-Expat (C)        7.38                  0.6
+Expat (C)        7.05                  0.6
 ================ ============== ====== =========
 
 Compile rpython application
