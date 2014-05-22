@@ -1,5 +1,4 @@
 import sys
-
 import xml.parsers.expat
 
 state = 0
@@ -9,18 +8,18 @@ def start_element(name, attrs):
     if name == 'ProductUrl':
         state = 1
 
+
 def char_data(data):
     global state
     if state == 1:
         print (data)
         state = 0
 
+
 def get_producturls(f):
     p = xml.parsers.expat.ParserCreate()
-
     p.StartElementHandler = start_element
     p.CharacterDataHandler = char_data
-
     p.ParseFile(f)
 
 
