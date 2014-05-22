@@ -42,6 +42,7 @@ What             i7-4500 1.8Mhz (s) Heap (MB)    MB/s
 ================ ================== ============ =====
 Expat (C)        7.05               0.6          144.9
 Custom (RPython) 8                  19.7         127.7
+Custom (Rust)    12s (?)            1mb (?)      ~83
 LXML (Python3)   13.4               **5573**     76.2
 Expat (luajit)   14.4               1.8          70.9
 Expat (lua5.2)   16.5               1.7          61.9
@@ -71,3 +72,17 @@ Haskell
 
     cabal install hexpat
     make hexpat
+
+Rust
+====
+
+::
+
+    make rust
+
+Benches were run on an i5 (TODO, re-run with i7) with
+
+::
+
+    $ rustc --version
+    rustc 0.11.0-pre-nightly (4605232 2014-05-21 01:11:25 -0700)
