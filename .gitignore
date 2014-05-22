@@ -1,0 +1,5 @@
+/rpython
+/publicfeed.*.xml
+/expat
+__pycache__
+*.py[oc]
