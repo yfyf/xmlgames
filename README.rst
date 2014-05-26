@@ -1,5 +1,5 @@
-Dumphole for fast XML processors
-================================
+Search of a fast XML processor
+==============================
 
 ::
 
